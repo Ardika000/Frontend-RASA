@@ -1,0 +1,1061 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Prompt:wght@300;400;500;600;700;800;900&display=swap");
+
+body {
+  /* background-image: linear-gradient(
+  310deg,
+  hsl(38deg 100% 50%) 0%,
+  hsl(32deg 60% 52%) 13%,
+  hsl(25deg 30% 47%) 25%,
+  hsl(303deg 5% 38%) 37%,
+  hsl(204deg 100% 23%) 50%,
+  hsl(209deg 58% 23%) 63%,
+  hsl(213deg 38% 21%) 75%,
+  hsl(216deg 20% 17%) 87%,
+  hsl(0deg 0% 13%) 100%
+  ); */
+
+  /* background-color: rgba(253, 247, 247, 0.267); */
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* font-family: Arial, Helvetica, sans-serif; */
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+}
+
+
+/* Navbar */
+nav {
+  /* background-color: rgba(255, 255, 255, 0.473); */
+  background-blend-mode: difference;
+  margin-top: 0;
+  padding: 1px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.title {
+  color: rgb(91, 124, 215);
+  font-size: 25px;
+}
+
+.title span {
+  color: rgb(238, 162, 20);
+}
+
+.logo-1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+
+}
+
+.upper-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  background: none;
+  border: none;
+  color: #2655b4;
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Anda juga dapat menambahkan transisi atau animasi jika diinginkan */
+.toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.menu{
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  margin-right: 30px;
+  align-items: flex-end;
+}
+
+.menu a{
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  position: relative;
+  font-weight: bold;
+}
+
+.menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: blue; /* Warna garis bawah */
+  transition: width 0.3s ease, background-color 0.6s ease;
+}
+
+.menu a:hover::after {
+  width: 100%; /* Lebar garis bawah saat dihover */
+  background-color: orange;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+}
+
+
+/* halaman utama */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88vh;
+  background-position: center;
+  background-image: url("./img/tunas-bg.jpg");
+  background-size: cover;
+  top: 0;
+  left: 0;
+}
+.layer {
+  background-color: rgba(0, 0, 0, 0.6); /* Warna hitam semi-transparan */
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  gap: 8rem;
+  color: white;
+  font-size: 22px;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 30px;
+}
+
+.main h1 {
+  font-family: "Prompt", sans-serif;
+}
+
+.text {
+  padding-right: 20px;
+}
+
+.text p {
+  text-align: justify;
+}
+
+.button-start {
+  background-color: #2655b4;
+  padding: 8px;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  border-radius: 8px;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-start:hover {
+  transform: scale(1.05);
+}
+
+/* SECTION CONTAINER 2 */
+
+.container-two {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: center;
+  background-color: rgb(224 242 254);
+}
+
+
+.name {
+  /* padding: 8px; */
+  font-size: 24px;
+  text-align: left;
+  color: white;
+  margin: 0;
+}
+.dita {
+  border-radius: 10px 10px 0 0;
+  background-color: rgb(238, 162, 20);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dita img {
+  margin-left: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  margin: 100px;
+  align-items: center;
+}
+
+.profile {
+  text-align: center;
+  background-color: #f9f9f9;
+  height: 500px;
+  width: 630px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dita-img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+.batas {
+  overflow: hidden;
+  height: 370px;
+}
+
+.chat-log {
+  max-height: 360px;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  /* margin-bottom: 20px;
+  margin-top: 10px; */
+  /* padding: 5px; */
+}
+
+.styled-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 510px;
+  padding-right: 50px;
+  height: 22px;
+  transition: border-color 0.3s;
+  font-size: 16px;
+}
+
+.styled-input:focus {
+  border-color: dodgerblue;
+}
+
+.styled-input::placeholder {
+  color: #aaa;
+}
+
+.styled-input:focus::placeholder {
+  color: transparent;
+}
+
+.send-button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.send-button img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin: auto;
+}
+
+.message {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.user-message {
+  background-color: #e0f7fa;
+  text-align: right;
+}
+
+.bot-message {
+  background-color: #c8e6c9;
+  text-align: left;
+}
+
+.bot-message-button {
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 5px;
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px; /* Menambahkan border radius */
+}
+
+.loading-dots {
+  display: none; /* Initially hide the loading dots */
+}
+
+@keyframes loading-animation {
+  0% {
+    content: ".";
+  }
+  33% {
+    content: "..";
+  }
+  66% {
+    content: "...";
+  }
+  100% {
+    content: "";
+  }
+}
+
+@keyframes slide-down {
+  form{
+    transform: translateY(-100%);
+  }
+  to{
+    transform: translateY(0);
+  }
+}
+
+.loading-dots::after {
+  content: "";
+  animation: loading-animation 1s infinite;
+  font-size: 24px; /* Adjust the font size as needed */
+  color: #000; /* Adjust the color as needed */
+}
+
+.bot-message-button {
+  display: block;
+  margin-top: 5px;
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+}
+.image .dita-view {
+  width: 300px;
+  height: 300px;
+  background-color: #2655b4;
+  border-radius: 50%;
+}
+.image p {
+  text-align: justify;
+}
+
+@media (max-width: 1015px) {
+  .content {
+    gap: 3rem;
+  }
+  .profile {
+    width: 600px;
+    height: 380px;
+  }
+  .batas {
+    overflow: hidden;
+    height: 260px;
+  }
+
+  .chat-log {
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .styled-input {
+    width: 300px;
+    height: 15px;
+  }
+  .send-button img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: auto;
+  }
+  .image img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    align-items: center;
+  }
+  .menu{
+    margin-right: 10px;
+  }
+  .main {
+    margin-top: 80px;
+  }
+  .text{
+    padding-bottom: 20px;
+  }
+
+  .main {
+    gap: 1rem;
+  }
+  .main .skip {
+    /* display: none; */
+    width: 500px;
+    height: 500px;
+  }
+  .content {
+    gap: 3rem;
+    padding: 10px;
+  }
+  .profile {
+    width: 450px;
+    height: 380px;
+  }
+  .batas {
+    overflow: hidden;
+    height: 260px;
+  }
+
+  .chat-log {
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .styled-input {
+    width: 300px;
+    height: 15px;
+  }
+  .send-button img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: auto;
+  }
+  #dita-view {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* contact page */
+  .img-contact{
+    display: none;
+  }
+  form{
+    margin-left: 70px;
+  }
+  #from{
+    width: 600px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #subject{
+    width: 600px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #message{
+    width: 600px;
+    height: 120px;
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 672px) {
+  .main {
+    gap: 1rem;
+    margin-top: 30px;
+    /* flex-direction: column-reverse; */
+  }
+  .main .skip {
+    /* display: none; */
+    width: 300px;
+    height: 300px;
+  }
+  .content {
+    flex-direction: column-reverse;
+  }
+  .profile {
+    width: 500px;
+    height: 500px;
+  }
+  .batas {
+    overflow: hidden;
+    height: 370px;
+  }
+
+  .chat-log {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .styled-input {
+    width: 410px;
+    height: 20px;
+  }
+  .send-button img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: auto;
+  }
+  .img-contact{
+    display: none;
+  }
+  form{
+    margin-left: 30px;
+  }
+  #from{
+    width: 450px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #subject{
+    width: 450px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #message{
+    width: 450px;
+    height: 120px;
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .layer {
+    padding-bottom: 20px;
+  }
+  .main {
+    gap: 1rem;
+    flex-direction: column-reverse;
+  }
+  .main .skip {
+    /* display: none; */
+    width: 300px;
+    height: 300px;
+  }
+  .content {
+    flex-direction: column-reverse;
+  }
+  .profile {
+    width: 450px;
+    height: 380px;
+  }
+  .batas {
+    overflow: hidden;
+    height: 260px;
+  }
+
+  .chat-log {
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .styled-input {
+    width: 350px;
+    height: 10px;
+  }
+  .send-button img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: auto;
+  }
+  .img-contact{
+    display: none;
+  }
+  form{
+    margin-left: 30px;
+  }
+  #from{
+    width: 450px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #subject{
+    width: 450px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #message{
+    width: 450px;
+    height: 120px;
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .toggle-btn{
+    display: block;
+  }
+  .menu{
+    display: none;
+  }
+  .upper-nav{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .menu{
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+  }
+  .menu a{
+    margin: 10px;
+    margin-left: 130px;
+  }
+
+  /* bagian bawah */
+  .profile {
+    display: none;
+  }
+  .layer {
+    padding-bottom: 20px;
+  }
+  .main .skip {
+    display: none;
+  }
+  .content {
+    flex-direction: column-reverse;
+  }
+  .profile {
+    width: 300px;
+    height: 300px;
+  }
+  .batas {
+    overflow: hidden;
+    height: 180px;
+  }
+
+  .chat-log {
+    max-height: 160px;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .styled-input {
+    width: 200px;
+    height: 10px;
+  }
+  .send-button img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: auto;
+  }
+
+  /* Contact Page */
+  #img-contact2{
+    display: none;
+  }
+  #from{
+    width: 250px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #subject{
+    width: 250px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #message{
+    width: 250px;
+    height: 120px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .form-group textarea{
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .form form button{
+    background-color: #2655b4;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    border-radius: 8px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .form form button:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 360px) {
+  
+  .toggle-btn{
+    display: block;
+  }
+  .menu{
+    display: none;
+  }
+  .upper-nav{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .menu{
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+  }
+  .menu a{
+    margin: 10px;
+    margin-left: 130px;
+  }
+
+  /* bagian bawah */
+  .profile {
+    display: none;
+  }
+  .layer {
+    padding-bottom: 20px;
+  }
+  .main .skip {
+    display: none;
+  }
+  .content {
+    flex-direction: column-reverse;
+  }
+  .profile {
+    width: 300px;
+    height: 300px;
+  }
+  .batas {
+    overflow: hidden;
+    height: 180px;
+  }
+
+  .chat-log {
+    max-height: 160px;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .styled-input {
+    width: 200px;
+    height: 10px;
+  }
+  .send-button img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: auto;
+  }
+
+  /* Contact Page */
+  #img-contact2{
+    display: none;
+  }
+
+  #from{
+    width: 200px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #subject{
+    width: 200px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #message{
+    width: 200px;
+    height: 120px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .form-group textarea{
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .form form button{
+    background-color: #2655b4;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    border-radius: 8px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .form form button:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Untuk layar sedang (tablet) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  /* Tambahkan aturan gaya responsif untuk layar tablet */
+}
+
+/* Untuk layar besar (desktop) */
+@media (min-width: 1025px) {
+  /* Tambahkan aturan gaya responsif untuk layar desktop */
+}
+
+
+.chat-toggle {
+  position: fixed;
+  bottom: 10px;
+  right: 2px;
+  background-color: transparent;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.chat-box {
+  position: fixed;
+  bottom: 110px;
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 300px;
+  height: 350px;
+  display: none;
+}
+
+.chat-box .dita img{
+  width: 30px;
+  height: 30px;
+}
+
+.batas2{
+  overflow: hidden;
+  height: 235px;
+}
+
+.chat-log2 {
+  max-height: 210px;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.input-wrapper2 {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  /* margin-bottom: 20px;
+  margin-top: 10px; */
+  /* padding: 5px; */
+}
+
+.styled-input2 {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 220px;
+  padding-right: 50px;
+  height: 20px;
+  transition: border-color 0.3s;
+  font-size: 16px;
+}
+
+.styled-input2:focus {
+  border-color: dodgerblue;
+}
+
+.styled-input2::placeholder {
+  color: #aaa;
+}
+
+.styled-input2:focus::placeholder {
+  color: transparent;
+}
+
+.send-button2 {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.send-button2 img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin: auto;
+}
+
+.loading-dots2 {
+  display: none;
+}
+
+@keyframes loading-animation2 {
+  0% {
+    content: ".";
+  }
+  33% {
+    content: "..";
+  }
+  66% {
+    content: "...";
+  }
+  100% {
+    content: "";
+  }
+}
+
+.loading-dots2::after {
+  content: "";
+  animation: loading-animation2 1s infinite;
+  font-size: 24px;
+  color: #000;
+}
+
+
+/* Contact Page */
+
+.contact{
+  background-color: #F1F8FD;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.container-contact{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  align-items: center;
+  gap: 5rem;
+}
+
+.img-contact img{
+  width: 500px;
+  height: 500px;
+  margin-left: 20px;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.form-group input{
+  width: 500px;
+  height: 20px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-group textarea{
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form form button{
+  background-color: #2655b4;
+  padding: 8px;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  border-radius: 8px;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form form button:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 13px;
+  position: relative;
+}
+
+footer a{
+  text-decoration: none;
+  color: white;
+}
+/* Footer End */

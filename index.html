@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DITA BOT</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./img/Dita_view.png" type="image/x-icon" />
+  </head>
+  <body>
+    <nav>
+      <div class="upper-nav">
+        <div class="logo-1">
+          <img src="./img/tunas-logo.png" alt="Logo" class="logo" />
+          <h1 class="title">DITA <span>BOT</span></h1>
+        </div>
+        <div class="menu" id="menu">
+          <a href="#">Home</a>
+          <a href="#container-two">Chat</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <button class="toggle-btn" id="toggleBtn">&#9776</button>
+    </nav>
+    <div class="container">
+      <div class="layer">
+        <div class="main">
+          <div class="text">
+            <h1>
+              Hi Sobat Tunas... <img src="./img/waving-hand.png" alt="" />
+            </h1>
+            <p>
+              Ini adalah sebuah website chatbot yang digunakan untuk membantu
+              teman-teman untuk mencari tau berbagai hal tentang SMK TUNAS
+              HARAPAN PATI
+            </p>
+            <button
+              class="button-start"
+              onclick="scrollToSection('container-two')"
+            >
+              Get Started
+            </button>
+          </div>
+          <img
+            class="skip"
+            src="./img/pngtree-robot-chatting-with-girl-icon-for-ai-topics-vector-vector-png-image_12210628-removebg-preview.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <section id="container-two" class="container-two">
+      <div class="content">
+        <div class="profile">
+          <div class="dita">
+            <img src="./img/Dita_view.png" class="dita-img" alt="Dita" />
+            <h1 class="name">DITA</h1>
+          </div>
+          <div class="chat-container">
+            <div class="batas">
+              <div class="chat-log" id="chat-log"></div>
+              <div class="loading-dots" id="loading-dots"></div>
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="user-input"
+                class="styled-input"
+                placeholder="Masukkan pesan..."
+              />
+              <button type="submit" id="send-button" class="send-button">
+                <img
+                  src="./img/send-message_3682321 (1).png"
+                  alt="Send Message"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="image">
+          <img src="./img/Dita_view.png" id="dita-view" class="dita-view" alt="Background" />
+          <p>Hay... aku DITA salam kenal ya</p>
+          <p>
+            Aku adalah assistent digital SMK TUNAS HARAPAN PATI, kalau mau
+            ngomong sama aku ketik hay aja di chat pastiku bales kok, makasih ya
+            :)
+          </p>
+          <div class="chat-box">
+            <div class="dita">
+              <img src="./img/Dita_view.png" class="dita-img" alt="Dita" />
+              <h1 class="name">DITA</h1>
+            </div>
+            <div class="chat-container2">
+              <div class="batas2">
+                <div class="chat-log2" id="chat-log2"></div>
+                <div class="loading-dots2" id="loading-dots2"></div>
+              </div>
+              <div class="input-wrapper2">
+                <input
+                  type="text"
+                  id="user-input2"
+                  class="styled-input2"
+                  placeholder="Masukkan pesan..."
+                />
+                <button type="submit" id="send-button2" class="send-button2">
+                  <img
+                    src="./img/send-message_3682321 (1).png"
+                    alt="Send Message"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="contact">
+      <div class="container-contact">
+        <div class="img-contact">
+          <img src="./img/—Pngtree—read emails web messages and_6465511.png" id="img-contact2" class="img-contact2" alt="">
+        </div>
+        <div class="form">
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="from">Email:</label>
+              <input type="text" name="from" id="from" placeholder="google@gmail.com">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject:</label>
+              <input type="text" name="subject" id="subject" placeholder="Subject pesan">
+            </div>
+            <div class="form-group">
+              <label for="message">Pesan:</label>
+              <textarea cols="30" rows="6" name="message" id="message" placeholder="Masukkan Pesan..."></textarea>
+            </div>
+            <button type="submit">KIRIM</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <a
+        href="https://smkthpati.sch.id/"
+        target="_blank"
+        >&copy; SMK TUNAS HARAPAN PATI 2024</a
+      >
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
