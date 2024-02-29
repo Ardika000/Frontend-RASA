@@ -47,6 +47,14 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+function handleMainOptionButtonClick(option) {
+  sendMessage(option);
+}
+
+function handleSecondaryOptionButtonClick(jurusan) {
+  sendMessage(jurusan);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   displayMessage2(
     "Selamat datang di DITA Bot kak! Supaya lebih mudah silakan pilih salah satu opsi di bawah ini. Atau kakak mau langsung chat juga boleh :)",
@@ -69,6 +77,75 @@ document.addEventListener("DOMContentLoaded", function () {
     displayButton2(button);
   });
 });
+
+function displayJurusanButton(){
+  const jurusanOptions =[
+    "TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
+    "OTO (Otomotif)",
+    "DKV (Desain Komunikasi Visual)",
+    "TM (Teknik Mesin)",
+    "LAS (Teknik Las)",
+    "KA (Kimia Analis)"
+  ]
+  jurusanOptions.forEach((jurusan)=>{
+    const button ={
+      title: jurusan,
+      payload: jurusan,
+    };
+    displayButton(button, handleSecondaryOptionButtonClick)
+  })
+}
+function displayMateriButton(){
+  const materiOptions =[
+    "Matematika",
+    "B.indonesia",
+    "B.Jawa",
+    "B.Inggris",
+    "PP",
+    "PAI",
+    "IPAS",
+    "DTJKT",
+    "PKK",
+    "Olahraga",
+  ]
+  materiOptions.forEach((materi)=>{
+    const button ={
+      title: materi,
+      payload: materi,
+    };
+    displayButton(button, handleSecondaryOptionButtonClick)
+  })
+}
+
+function displayKelasJurusanButton(){
+  const jurusanOptions =[
+    "10 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
+    "11 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
+    "12 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
+    "10 OTO (Otomotif)",
+    "11 OTO (Otomotif)",
+    "12 OTO (Otomotif)",
+    "10 DKV (Desain Komunikasi Visual)",
+    "11 DKV (Desain Komunikasi Visual)",
+    "12 DKV (Desain Komunikasi Visual)",
+    "10 TM (Teknik Mesin)",
+    "11 TM (Teknik Mesin)",
+    "12 TM (Teknik Mesin)",
+    "10 LAS (Teknik Las)",
+    "11 LAS (Teknik Las)",
+    "12 LAS (Teknik Las)",
+    "10 KA (Kimia Analis)",
+    "11 KA (Kimia Analis)",
+    "12 KA (Kimia Analis)"
+  ]
+  jurusanOptions.forEach((jurusan)=>{
+    const button ={
+      title: jurusan,
+      payload: jurusan,
+    };
+    displayButton(button, handleSecondaryOptionButtonClick)
+  })
+}
 
 function sendMessage(payload) {
   let message;
@@ -108,6 +185,18 @@ socket.on("bot_uttered", (response) => {
   const buttons = response.buttons;
   loadingDots.style.display = "none";
   displayMessage(botMessage, "bot");
+
+  if(botMessage.toLowerCase().includes("tolong masukkan jurusannya ya kak :)")){
+    displayJurusanButton();
+  }
+
+  if(botMessage.toLowerCase().includes("tolong masukkan kelas dan jurusannya ya kak :)")){
+    displayKelasJurusanButton();
+  }
+
+  if(botMessage.toLowerCase().includes("tolong masukkan materi yang diajar guru tersebut ya kak :)")){
+    displayMateriButton();
+  }
 
   if (buttons && buttons.length > 0) {
     buttons.forEach((button) => {
