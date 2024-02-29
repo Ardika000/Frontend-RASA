@@ -1,5 +1,5 @@
 // const socket = io("https://server.ditabot.online:5005/"); // Socket.io connection to Rasa API
-const socket = io("http://localhost:5005"); // Socket.io connection to Rasa API
+const socket = io("https://server.ditabot.online:5005/"); // Socket.io connection to Rasa API
 
 const chatLog = document.getElementById("chat-log");
 const userInput = document.getElementById("user-input");
