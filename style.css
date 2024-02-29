@@ -1,22 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Prompt:wght@300;400;500;600;700;800;900&display=swap");
 
 body {
-  /* background-image: linear-gradient(
-  310deg,
-  hsl(38deg 100% 50%) 0%,
-  hsl(32deg 60% 52%) 13%,
-  hsl(25deg 30% 47%) 25%,
-  hsl(303deg 5% 38%) 37%,
-  hsl(204deg 100% 23%) 50%,
-  hsl(209deg 58% 23%) 63%,
-  hsl(213deg 38% 21%) 75%,
-  hsl(216deg 20% 17%) 87%,
-  hsl(0deg 0% 13%) 100%
-  ); */
-
-  /* background-color: rgba(253, 247, 247, 0.267); */
-  /* background-color: rgba(0, 0, 0, 0.5); */
-  /* font-family: Arial, Helvetica, sans-serif; */
   margin: 0;
   font-family: "Poppins", sans-serif;
   padding: 0;
@@ -196,6 +180,8 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
 }
 
 .dita img {
@@ -205,8 +191,9 @@ nav {
 .content {
   display: flex;
   flex-direction: row;
-  gap: 5rem;
-  margin: 100px;
+  gap: 3rem;
+  width: 100%;
+  margin: 30px;
   align-items: center;
 }
 
@@ -214,7 +201,7 @@ nav {
   text-align: center;
   background-color: #f9f9f9;
   height: 500px;
-  width: 630px;
+  width: 70%;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -231,7 +218,7 @@ nav {
 }
 
 .chat-log {
-  max-height: 360px;
+  height: 350px;
   overflow-y: auto;
   padding: 20px;
 }
@@ -249,7 +236,7 @@ nav {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 20px;
-  width: 510px;
+  width: 700px;
   padding-right: 50px;
   height: 22px;
   transition: border-color 0.3s;
@@ -371,6 +358,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 30%;
   flex-wrap: wrap-reverse;
 }
 .image .dita-view {
@@ -389,31 +377,57 @@ nav {
   }
   .profile {
     width: 600px;
-    height: 380px;
+    height: 460px;
   }
   .batas {
     overflow: hidden;
-    height: 260px;
+    height: 330px;
   }
 
   .chat-log {
-    max-height: 250px;
+    height: 310px;
     overflow-y: auto;
     padding: 20px;
   }
   .styled-input {
-    width: 300px;
-    height: 15px;
+    width: 500px;
+    height: 20px;
   }
   .send-button img {
-    width: 10px;
-    height: 10px;
+    width: 18px;
+    height: 18px;
     display: block;
     margin: auto;
   }
   .image img {
     width: 200px;
     height: 200px;
+  }
+
+  /* contact page */
+  .img-contact{
+    display: none;
+  }
+  form{
+    margin-left: 70px;
+  }
+  #from{
+    width: 830px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #subject{
+    width: 830px;
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #message{
+    width: 830px;
+    height: 120px;
+    padding: 10px;
+    font-size: 16px;
   }
 }
 
@@ -426,18 +440,12 @@ nav {
   }
   .main {
     margin-top: 80px;
-  }
-  .text{
-    padding-bottom: 20px;
-  }
-
-  .main {
     gap: 1rem;
   }
   .main .skip {
     /* display: none; */
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
   }
   .content {
     gap: 3rem;
@@ -445,25 +453,26 @@ nav {
   }
   .profile {
     width: 450px;
-    height: 380px;
+    height: 390px;
   }
+
   .batas {
     overflow: hidden;
     height: 260px;
-  }
+  } 
 
   .chat-log {
-    max-height: 250px;
+    height: 230px;
     overflow-y: auto;
     padding: 20px;
   }
   .styled-input {
-    width: 300px;
-    height: 15px;
+    width: 350px;
+    height: 20px;
   }
   .send-button img {
-    width: 10px;
-    height: 10px;
+    width: 18px;
+    height: 18px;
     display: block;
     margin: auto;
   }
@@ -510,11 +519,21 @@ nav {
     width: 300px;
     height: 300px;
   }
+  .container{
+    padding-bottom: 20px;
+  }
+  .layer {
+    padding-bottom: 20px;
+    margin-top: 21px;
+  }
+  .image{
+    width: 90%;
+  }
   .content {
     flex-direction: column-reverse;
   }
   .profile {
-    width: 500px;
+    width: 100%;
     height: 500px;
   }
   .batas {
@@ -523,17 +542,17 @@ nav {
   }
 
   .chat-log {
-    max-height: 350px;
+    height: 350px;
     overflow-y: auto;
     padding: 20px;
   }
   .styled-input {
-    width: 410px;
+    width: 450px;
     height: 20px;
   }
   .send-button img {
-    width: 10px;
-    height: 10px;
+    width: 18px;
+    height: 18px;
     display: block;
     margin: auto;
   }
@@ -564,8 +583,12 @@ nav {
 }
 
 @media (max-width: 576px) {
+  .container{
+    padding-bottom: 20px;
+  }
   .layer {
     padding-bottom: 20px;
+    margin-top: 21px;
   }
   .main {
     gap: 1rem;
@@ -580,7 +603,7 @@ nav {
     flex-direction: column-reverse;
   }
   .profile {
-    width: 450px;
+    width: 100%;
     height: 380px;
   }
   .batas {
@@ -588,14 +611,18 @@ nav {
     height: 260px;
   }
 
+  .image{
+    width: 100%;
+  }
+
   .chat-log {
-    max-height: 250px;
+    height: 250px;
     overflow-y: auto;
     padding: 20px;
   }
   .styled-input {
     width: 350px;
-    height: 10px;
+    height: 13px;
   }
   .send-button img {
     width: 10px;
@@ -648,15 +675,19 @@ nav {
   }
   .menu a{
     margin: 10px;
-    margin-left: 130px;
+    margin-left: 200px;
   }
 
   /* bagian bawah */
   .profile {
     display: none;
   }
+  .container{
+    padding-bottom: 20px;
+  }
   .layer {
     padding-bottom: 20px;
+    margin-top: 21px;
   }
   .main .skip {
     display: none;
@@ -674,7 +705,7 @@ nav {
   }
 
   .chat-log {
-    max-height: 160px;
+    height: 160px;
     overflow-y: auto;
     padding: 20px;
   }
@@ -687,6 +718,10 @@ nav {
     height: 10px;
     display: block;
     margin: auto;
+  }
+
+  .image{
+    width: 100%;
   }
 
   /* Contact Page */
@@ -762,8 +797,12 @@ nav {
   .profile {
     display: none;
   }
+  .container{
+    padding-bottom: 20px;
+  }
   .layer {
     padding-bottom: 20px;
+    margin-top: 21px;
   }
   .main .skip {
     display: none;
@@ -781,7 +820,7 @@ nav {
   }
 
   .chat-log {
-    max-height: 160px;
+    height: 160px;
     overflow-y: auto;
     padding: 20px;
   }
@@ -794,6 +833,10 @@ nav {
     height: 10px;
     display: block;
     margin: auto;
+  }
+
+  .image{
+    width: 100%;
   }
 
   /* Contact Page */
@@ -880,9 +923,42 @@ nav {
   display: none;
 }
 
+.dita-box{
+  display: flex;
+  align-items: center;
+}
+
 .chat-box .dita img{
   width: 30px;
   height: 30px;
+}
+
+#size{
+  width: 20px;
+  height: 20px;
+}
+
+#size1{
+  width: 20px;
+  height: 20px;
+}
+
+.full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.profile-full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
 }
 
 .batas2{
@@ -890,8 +966,9 @@ nav {
   height: 235px;
 }
 
+
 .chat-log2 {
-  max-height: 210px;
+  height: 210px;
   overflow-y: auto;
   padding: 20px;
 }

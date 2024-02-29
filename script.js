@@ -1,6 +1,5 @@
-// const socket = io("http://localhost:5005"); // Socket.io connection to Rasa API
-
-const socket = io("https://server.ditabot.online:5005"); // Socket.io connection to Rasa API
+// const socket = io("https://server.ditabot.online:5005/"); // Socket.io connection to Rasa API
+const socket = io("http://localhost:5005"); // Socket.io connection to Rasa API
 
 const chatLog = document.getElementById("chat-log");
 const userInput = document.getElementById("user-input");
@@ -11,14 +10,14 @@ const sendButton2 = document.getElementById("send-button2");
 const loadingDots = document.getElementById("loading-dots");
 const loadingDots2 = document.getElementById("loading-dots2");
 
-sendButton.addEventListener("click", sendMessage);
+sendButton.addEventListener("click", () => sendMessage());
 userInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     sendMessage();
   }
 });
 
-sendButton2.addEventListener("click", sendMessage2);
+sendButton2.addEventListener("click", () => sendMessage2());
 userInput2.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     sendMessage2();
@@ -38,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Materi Jurusan",
     "Profil Jurusan",
     "Produk Teaching Factory",
-  ]; // Ganti dengan opsi sesuai kebutuhan Anda
+  ];
   options.forEach((option) => {
     const button = {
       title: option,
@@ -61,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "Materi Jurusan",
     "Profil Jurusan",
     "Produk Teaching Factory",
-  ]; // Ganti dengan opsi sesuai kebutuhan Anda
+  ];
   options.forEach((option) => {
     const button = {
       title: option,
@@ -102,16 +101,6 @@ function sendMessage2(payload) {
     userInput2.value = "";
   }
 }
-
-// function sendMessage() {
-//     const message = userInput.value.trim();
-//     if (message !== "") {
-//         displayMessage(message, "user");
-//         loadingDots.style.display = "inline-block";
-//         socket.emit("user_uttered", { message });
-//         userInput.value = "";
-//     }
-// }
 
 // Receive and display bot responses from Rasa
 socket.on("bot_uttered", (response) => {
@@ -322,3 +311,233 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// full screen
+document.getElementById('size').addEventListener('click', ()=> {
+  const chatBox = document.querySelector('.chat-box');
+  const chatLog = document.getElementById('chat-log2');
+  const userInput2 = document.getElementById('user-input2');
+
+  chatBox.classList.toggle('full-screen');
+  
+  const batas2 = document.querySelector('.batas2');
+  if (chatBox.classList.contains('full-screen')) {
+    batas2.style.height = '530px'; 
+  }else{
+    batas2.style.height = '235px'; 
+  
+  }
+
+  if (chatBox.classList.contains('full-screen')) {
+    chatLog.style.height = '510px';
+  }else{
+    chatLog.style.height = '210px';
+  }
+
+  if (chatBox.classList.contains('full-screen')) {
+    userInput2.style.width = '280px';
+  }else{
+    userInput2.style.width = '220px';
+  }
+});
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  document.getElementById('size1').addEventListener('click',()=>{
+    
+    if(window.innerWidth>=1280){
+      const profile = document.querySelector('.profile');
+      if(!profile.classList.contains('profile-full-screen')){
+        profile.classList.add('profile-full-screen');
+      }else{
+        profile.classList.remove('profile-full-screen');
+      }
+  
+      const chatLog = document.getElementById('chat-log');
+      if (profile.classList.contains('profile-full-screen')) {
+        chatLog.style.height = '580px'; 
+      }else{
+        chatLog.style.height = '350px'; 
+      }
+      
+      const batas = document.querySelector('.batas');
+      if (profile.classList.contains('profile-full-screen')) {
+        batas.style.height = '600px'; 
+      }else{
+        batas.style.height = '370px'; 
+      }
+      
+      const userInput= document.getElementById('user-input');
+      if(profile.classList.contains('profile-full-screen')){
+        userInput.style.width = '1000px';
+        userInput.style.height= '30px'
+      }else{
+        userInput.style.width = '700px';
+      }
+    }
+    if(window.innerWidth<=576){
+      const profile = document.querySelector('.profile');
+      if(!profile.classList.contains('profile-full-screen')){
+        profile.classList.add('profile-full-screen');
+      }else{
+        profile.classList.remove('profile-full-screen');
+      }
+  
+      const chatLog = document.getElementById('chat-log');
+      if (profile.classList.contains('profile-full-screen')) {
+        chatLog.style.height = '630px'; 
+      }else{
+        chatLog.style.height = '250px'; 
+      }
+      
+      const batas = document.querySelector('.batas');
+      if (profile.classList.contains('profile-full-screen')) {
+        batas.style.height = '650px'; 
+      }else{
+        batas.style.height = '260px'; 
+      }
+      
+      const userInput= document.getElementById('user-input');
+      if(profile.classList.contains('profile-full-screen')){
+        userInput.style.width = '490px';
+        userInput.style.height= '30px'
+      }else{
+        userInput.style.width = '350px';
+        userInput.style.height = '13px';
+      }
+      
+      const sendImg = document.querySelector('.send-img');
+      if(profile.classList.contains('profile-full-screen')){
+        sendImg.style.width = '20px';
+        sendImg.style.height= '20px'
+      }else{
+        sendImg.style.width = '10px';
+        sendImg.style.height = '10px';
+      }
+
+    }
+    if(window.innerWidth<=672){
+      const profile = document.querySelector('.profile');
+      if(!profile.classList.contains('profile-full-screen')){
+        profile.classList.add('profile-full-screen');
+      }else{
+        profile.classList.remove('profile-full-screen');
+      }
+  
+      const chatLog = document.getElementById('chat-log');
+      if (profile.classList.contains('profile-full-screen')) {
+        chatLog.style.height = '630px'; 
+      }else{
+        chatLog.style.height = '350px'; 
+      }
+      
+      const batas = document.querySelector('.batas');
+      if (profile.classList.contains('profile-full-screen')) {
+        batas.style.height = '650px'; 
+      }else{
+        batas.style.height = '370px'; 
+      }
+      
+      const userInput= document.getElementById('user-input');
+      if(profile.classList.contains('profile-full-screen')){
+        userInput.style.width = '490px';
+        userInput.style.height= '30px'
+      }else{
+        userInput.style.width = '450px';
+        userInput.style.height = '20px';
+      }
+      
+      const sendImg = document.querySelector('.send-img');
+      if(profile.classList.contains('profile-full-screen')){
+        sendImg.style.width = '20px';
+        sendImg.style.height= '20px'
+      }else{
+        sendImg.style.width = '18px';
+        sendImg.style.height = '18px';
+      }
+
+    }
+    if(window.innerWidth<=768){
+      const profile = document.querySelector('.profile');
+      if(!profile.classList.contains('profile-full-screen')){
+        profile.classList.add('profile-full-screen');
+      }else{
+        profile.classList.remove('profile-full-screen');
+      }
+  
+      const chatLog = document.getElementById('chat-log');
+      if (profile.classList.contains('profile-full-screen')) {
+        chatLog.style.height = '830px'; 
+      }else{
+        chatLog.style.height = '230px'; 
+      }
+      
+      const batas = document.querySelector('.batas');
+      if (profile.classList.contains('profile-full-screen')) {
+        batas.style.height = '850px'; 
+      }else{
+        batas.style.height = '260px'; 
+      }
+      
+      const userInput= document.getElementById('user-input');
+      if(profile.classList.contains('profile-full-screen')){
+        userInput.style.width = '600px';
+        userInput.style.height= '30px'
+      }else{
+        userInput.style.width = '350px';
+        userInput.style.height = '20px';
+      }
+      
+      const sendImg = document.querySelector('.send-img');
+      if(profile.classList.contains('profile-full-screen')){
+        sendImg.style.width = '20px';
+        sendImg.style.height= '20px'
+      }else{
+        sendImg.style.width = '18px';
+        sendImg.style.height = '18px';
+      }
+
+    }
+    if(window.innerWidth<=1015){
+      const profile = document.querySelector('.profile');
+      if(!profile.classList.contains('profile-full-screen')){
+        profile.classList.add('profile-full-screen');
+      }else{
+        profile.classList.remove('profile-full-screen');
+      }
+  
+      const chatLog = document.getElementById('chat-log');
+      if (profile.classList.contains('profile-full-screen')) {
+        chatLog.style.height = '850px'; 
+      }else{
+        chatLog.style.height = '310px'; 
+      }
+      
+      const batas = document.querySelector('.batas');
+      if (profile.classList.contains('profile-full-screen')) {
+        batas.style.height = '870px'; 
+      }else{
+        batas.style.height = '330px'; 
+      }
+      
+      const userInput= document.getElementById('user-input');
+      if(profile.classList.contains('profile-full-screen')){
+        userInput.style.width = '900px';
+        userInput.style.height= '30px'
+      }else{
+        userInput.style.width = '500px';
+        userInput.style.height = '20px';
+      }
+      
+      const sendImg = document.querySelector('.send-img');
+      if(profile.classList.contains('profile-full-screen')){
+        sendImg.style.width = '20px';
+        sendImg.style.height= '20px'
+      }else{
+        sendImg.style.width = '18px';
+        sendImg.style.height = '18px';
+      }
+
+    }
+  });
+});
+
