@@ -55,6 +55,21 @@ function handleSecondaryOptionButtonClick(jurusan) {
   sendMessage(jurusan);
 }
 
+function handleSecondaryOptionButtonClick(materi) {
+  sendMessage(materi);
+}
+function handleMainOptionButtonClick2(option) {
+  sendMessage2(option);
+}
+
+function handleSecondaryOptionButtonClick2(jurusan) {
+  sendMessage2(jurusan);
+}
+
+function handleSecondaryOptionButtonClick2(materi) {
+  sendMessage2(materi);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   displayMessage2(
     "Selamat datang di DITA Bot kak! Supaya lebih mudah silakan pilih salah satu opsi di bawah ini. Atau kakak mau langsung chat juga boleh :)",
@@ -95,6 +110,23 @@ function displayJurusanButton(){
     displayButton(button, handleSecondaryOptionButtonClick)
   })
 }
+function displayJurusanButton2(){
+  const jurusanOptions =[
+    "TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
+    "OTO (Otomotif)",
+    "DKV (Desain Komunikasi Visual)",
+    "TM (Teknik Mesin)",
+    "LAS (Teknik Las)",
+    "KA (Kimia Analis)"
+  ]
+  jurusanOptions.forEach((jurusan)=>{
+    const button ={
+      title: jurusan,
+      payload: jurusan,
+    };
+    displayButton2(button, handleSecondaryOptionButtonClick2)
+  })
+}
 function displayMateriButton(){
   const materiOptions =[
     "Matematika",
@@ -114,6 +146,27 @@ function displayMateriButton(){
       payload: materi,
     };
     displayButton(button, handleSecondaryOptionButtonClick)
+  })
+}
+function displayMateriButton2(){
+  const materiOptions =[
+    "Matematika",
+    "B.indonesia",
+    "B.Jawa",
+    "B.Inggris",
+    "PP",
+    "PAI",
+    "IPAS",
+    "DTJKT",
+    "PKK",
+    "Olahraga",
+  ]
+  materiOptions.forEach((materi)=>{
+    const button ={
+      title: materi,
+      payload: materi,
+    };
+    displayButton2(button, handleSecondaryOptionButtonClick2)
   })
 }
 
@@ -144,6 +197,35 @@ function displayKelasJurusanButton(){
       payload: jurusan,
     };
     displayButton(button, handleSecondaryOptionButtonClick)
+  })
+}
+function displayKelasJurusanButton2(){
+  const jurusanOptions =[
+    "10 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
+    "11 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
+    "12 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
+    "10 OTO (Otomotif)",
+    "11 OTO (Otomotif)",
+    "12 OTO (Otomotif)",
+    "10 DKV (Desain Komunikasi Visual)",
+    "11 DKV (Desain Komunikasi Visual)",
+    "12 DKV (Desain Komunikasi Visual)",
+    "10 TM (Teknik Mesin)",
+    "11 TM (Teknik Mesin)",
+    "12 TM (Teknik Mesin)",
+    "10 LAS (Teknik Las)",
+    "11 LAS (Teknik Las)",
+    "12 LAS (Teknik Las)",
+    "10 KA (Kimia Analis)",
+    "11 KA (Kimia Analis)",
+    "12 KA (Kimia Analis)"
+  ]
+  jurusanOptions.forEach((jurusan)=>{
+    const button ={
+      title: jurusan,
+      payload: jurusan,
+    };
+    displayButton2(button, handleSecondaryOptionButtonClick2)
   })
 }
 
@@ -212,6 +294,18 @@ socket.on("bot_uttered", (response) => {
   const buttons = response.buttons;
   loadingDots2.style.display = "none";
   displayMessage2(botMessage, "bot");
+
+  if(botMessage.toLowerCase().includes("tolong masukkan jurusannya ya kak :)")){
+    displayJurusanButton2();
+  }
+
+  if(botMessage.toLowerCase().includes("tolong masukkan kelas dan jurusannya ya kak :)")){
+    displayKelasJurusanButton2();
+  }
+
+  if(botMessage.toLowerCase().includes("tolong masukkan materi yang diajar guru tersebut ya kak :)")){
+    displayMateriButton2();
+  }
 
   if (buttons && buttons.length > 0) {
     buttons.forEach((button) => {
