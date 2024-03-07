@@ -1,5 +1,5 @@
 // const socket = io("https://server.ditabot.online:5005/"); // Socket.io connection to Rasa API
-const socket = io("https://server.ditabot.online:5005/"); // Socket.io connection to Rasa API
+const socket = io("http://localhost:5005"); // Socket.io connection to Rasa API
 
 const chatLog = document.getElementById("chat-log");
 const userInput = document.getElementById("user-input");
@@ -7,8 +7,12 @@ const sendButton = document.getElementById("send-button");
 const chatLog2 = document.getElementById("chat-log2");
 const userInput2 = document.getElementById("user-input2");
 const sendButton2 = document.getElementById("send-button2");
-const loadingDots = document.getElementById("loading-dots");
-const loadingDots2 = document.getElementById("loading-dots2");
+
+const loadingDots = document.createElement("div");
+loadingDots.classList.add("loading-dots");
+// loadingDots.innerHTML = "Loading..." ; // Anda bisa menggunakan gambar atau animasi loading lainnya
+chatLog.appendChild(loadingDots);
+loadingDots.style.display = "none";
 
 sendButton.addEventListener("click", () => sendMessage());
 userInput.addEventListener("keypress", function (event) {
@@ -26,25 +30,25 @@ userInput2.addEventListener("keypress", function (event) {
 
 document.addEventListener("DOMContentLoaded", function () {
   displayMessage(
-    "Selamat datang di DITA Bot kak! Supaya lebih mudah silakan pilih salah satu opsi di bawah ini. Atau kakak mau langsung chat juga boleh :)",
+    "Selamat datang di DITA BOT kak! Silahkan ketik hay untuk mulai berbicara dengan DITA :)",
     "bot"
   );
 
-  const options = [
-    "Profil Sekolah",
-    "Peluang Kerja",
-    "Jadwal sekolah",
-    "Materi Jurusan",
-    "Profil Jurusan",
-    "Produk Teaching Factory",
-  ];
-  options.forEach((option) => {
-    const button = {
-      title: option,
-      payload: option,
-    };
-    displayButton(button);
-  });
+  // const options = [
+  //   "Profil Sekolah",
+  //   "Peluang Kerja",
+  //   "Jadwal sekolah",
+  //   "Materi Jurusan",
+  //   "Profil Jurusan",
+  //   "Produk Teaching Factory",
+  // ];
+  // options.forEach((option) => {
+  //   const button = {
+  //     title: option,
+  //     payload: option,
+  //   };
+  //   displayButton(button);
+  // });
 });
 
 function handleMainOptionButtonClick(option) {
@@ -58,6 +62,10 @@ function handleSecondaryOptionButtonClick(jurusan) {
 function handleSecondaryOptionButtonClick(materi) {
   sendMessage(materi);
 }
+
+function handleSecondaryOptionButtonClick(menu) {
+  sendMessage(menu);
+}
 function handleMainOptionButtonClick2(option) {
   sendMessage2(option);
 }
@@ -70,13 +78,35 @@ function handleSecondaryOptionButtonClick2(materi) {
   sendMessage2(materi);
 }
 
+function handleSecondaryOptionButtonClick2(menu) {
+  sendMessage2(menu);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   displayMessage2(
-    "Selamat datang di DITA Bot kak! Supaya lebih mudah silakan pilih salah satu opsi di bawah ini. Atau kakak mau langsung chat juga boleh :)",
+    "Selamat datang di DITA BOT kak! Silahkan ketik hay untuk mulai berbicara dengan DITA :)",
     "bot"
   );
 
-  const options = [
+  // const options = [
+  //   "Profil Sekolah",
+  //   "Peluang Kerja",
+  //   "Jadwal sekolah",
+  //   "Materi Jurusan",
+  //   "Profil Jurusan",
+  //   "Produk Teaching Factory",
+  // ];
+  // options.forEach((option) => {
+  //   const button = {
+  //     title: option,
+  //     payload: option,
+  //   };
+  //   displayButton2(button);
+  // });
+});
+
+function displayMenuButton() {
+  const menuOptions = [
     "Profil Sekolah",
     "Peluang Kerja",
     "Jadwal sekolah",
@@ -84,51 +114,67 @@ document.addEventListener("DOMContentLoaded", function () {
     "Profil Jurusan",
     "Produk Teaching Factory",
   ];
-  options.forEach((option) => {
+  menuOptions.forEach((menu) => {
     const button = {
-      title: option,
-      payload: option,
+      title: menu,
+      payload: menu,
     };
-    displayButton2(button);
+    displayButton(button, handleSecondaryOptionButtonClick);
   });
-});
-
-function displayJurusanButton(){
-  const jurusanOptions =[
+}
+function displayMenuButton2() {
+  const menuOptions = [
+    "Profil Sekolah",
+    "Peluang Kerja",
+    "Jadwal sekolah",
+    "Materi Jurusan",
+    "Profil Jurusan",
+    "Produk Teaching Factory",
+  ];
+  menuOptions.forEach((menu) => {
+    const button = {
+      title: menu,
+      payload: menu,
+    };
+    displayButton2(button, handleSecondaryOptionButtonClick);
+  });
+}
+function displayJurusanButton() {
+  const jurusanOptions = [
     "TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
     "OTO (Otomotif)",
     "DKV (Desain Komunikasi Visual)",
     "TM (Teknik Mesin)",
     "LAS (Teknik Las)",
-    "KA (Kimia Analis)"
-  ]
-  jurusanOptions.forEach((jurusan)=>{
-    const button ={
+    "KA (Kimia Analis)",
+  ];
+  jurusanOptions.forEach((jurusan) => {
+    const button = {
       title: jurusan,
       payload: jurusan,
     };
-    displayButton(button, handleSecondaryOptionButtonClick)
-  })
+    displayButton(button, handleSecondaryOptionButtonClick);
+  });
 }
-function displayJurusanButton2(){
-  const jurusanOptions =[
+function displayJurusanButton2() {
+  const jurusanOptions = [
     "TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
     "OTO (Otomotif)",
     "DKV (Desain Komunikasi Visual)",
     "TM (Teknik Mesin)",
     "LAS (Teknik Las)",
-    "KA (Kimia Analis)"
-  ]
-  jurusanOptions.forEach((jurusan)=>{
-    const button ={
+    "KA (Kimia Analis)",
+  ];
+  jurusanOptions.forEach((jurusan) => {
+    const button = {
       title: jurusan,
       payload: jurusan,
     };
-    displayButton2(button, handleSecondaryOptionButtonClick2)
-  })
+    displayButton2(button, handleSecondaryOptionButtonClick);
+  });
 }
-function displayMateriButton(){
-  const materiOptions =[
+function displayMateriButton() {
+  const materiOptions = [
     "Matematika",
     "B.indonesia",
     "B.Jawa",
@@ -139,17 +185,17 @@ function displayMateriButton(){
     "DTJKT",
     "PKK",
     "Olahraga",
-  ]
-  materiOptions.forEach((materi)=>{
-    const button ={
+  ];
+  materiOptions.forEach((materi) => {
+    const button = {
       title: materi,
       payload: materi,
     };
-    displayButton(button, handleSecondaryOptionButtonClick)
-  })
+    displayButton(button, handleSecondaryOptionButtonClick);
+  });
 }
-function displayMateriButton2(){
-  const materiOptions =[
+function displayMateriButton2() {
+  const materiOptions = [
     "Matematika",
     "B.indonesia",
     "B.Jawa",
@@ -160,18 +206,18 @@ function displayMateriButton2(){
     "DTJKT",
     "PKK",
     "Olahraga",
-  ]
-  materiOptions.forEach((materi)=>{
-    const button ={
+  ];
+  materiOptions.forEach((materi) => {
+    const button = {
       title: materi,
       payload: materi,
     };
-    displayButton2(button, handleSecondaryOptionButtonClick2)
-  })
+    displayButton2(button, handleSecondaryOptionButtonClick);
+  });
 }
 
-function displayKelasJurusanButton(){
-  const jurusanOptions =[
+function displayKelasJurusanButton() {
+  const jurusanOptions = [
     "10 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
     "11 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
     "12 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
@@ -189,18 +235,18 @@ function displayKelasJurusanButton(){
     "12 LAS (Teknik Las)",
     "10 KA (Kimia Analis)",
     "11 KA (Kimia Analis)",
-    "12 KA (Kimia Analis)"
-  ]
-  jurusanOptions.forEach((jurusan)=>{
-    const button ={
+    "12 KA (Kimia Analis)",
+  ];
+  jurusanOptions.forEach((jurusan) => {
+    const button = {
       title: jurusan,
       payload: jurusan,
     };
-    displayButton(button, handleSecondaryOptionButtonClick)
-  })
+    displayButton(button, handleSecondaryOptionButtonClick);
+  });
 }
-function displayKelasJurusanButton2(){
-  const jurusanOptions =[
+function displayKelasJurusanButton2() {
+  const jurusanOptions = [
     "10 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
     "11 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
     "12 TJKT (Teknik Jaringan Komputer dan Telekomunikasi",
@@ -218,15 +264,15 @@ function displayKelasJurusanButton2(){
     "12 LAS (Teknik Las)",
     "10 KA (Kimia Analis)",
     "11 KA (Kimia Analis)",
-    "12 KA (Kimia Analis)"
-  ]
-  jurusanOptions.forEach((jurusan)=>{
-    const button ={
+    "12 KA (Kimia Analis)",
+  ];
+  jurusanOptions.forEach((jurusan) => {
+    const button = {
       title: jurusan,
       payload: jurusan,
     };
-    displayButton2(button, handleSecondaryOptionButtonClick2)
-  })
+    displayButton2(button, handleSecondaryOptionButtonClick);
+  });
 }
 
 function sendMessage(payload) {
@@ -239,8 +285,8 @@ function sendMessage(payload) {
 
   if (message !== "") {
     displayMessage(message, "user");
-    loadingDots.style.display = "inline-block";
     socket.emit("user_uttered", { message });
+    // loadingDots.style.display = "block";
     userInput.value = "";
   }
 }
@@ -255,65 +301,270 @@ function sendMessage2(payload) {
 
   if (message !== "") {
     displayMessage2(message, "user");
-    loadingDots2.style.display = "inline-block";
     socket.emit("user_uttered", { message });
     userInput2.value = "";
   }
 }
 
-// Receive and display bot responses from Rasa
 socket.on("bot_uttered", (response) => {
-  const botMessage = response.text;
-  const buttons = response.buttons;
-  loadingDots.style.display = "none";
-  displayMessage(botMessage, "bot");
+  const botMessages = response.text.split("\b");
 
-  if(botMessage.toLowerCase().includes("tolong masukkan jurusannya ya kak :)")){
-    displayJurusanButton();
-  }
+  let index = 0;
+  const displayNextMessage = () => {
+    if (index < botMessages.length) {
+      const botMessage = botMessages[index];
+      const buttons = response.buttons;
 
-  if(botMessage.toLowerCase().includes("tolong masukkan kelas dan jurusannya ya kak :)")){
-    displayKelasJurusanButton();
-  }
+      displayMessage("...", "bot");
 
-  if(botMessage.toLowerCase().includes("tolong masukkan materi yang diajar guru tersebut ya kak :)")){
-    displayMateriButton();
-  }
+      setTimeout(() => {
+        if (botMessage) {
+          displayMessage(botMessage, "bot");
 
-  if (buttons && buttons.length > 0) {
-    buttons.forEach((button) => {
-      displayButton(button);
-    });
-  }
+          if (botMessage.indexOf("Hay kak") !== -1) {
+            displayMenuButton();
+          }
 
-  chatLog.scrollTop = chatLog.scrollHeight;
+          if (
+            botMessage.includes(
+              "Ini dia beberapa pilahan menu untuk membantu kakak bertanya :)"
+            )
+          ) {
+            displayMenuButton();
+          }
+          if (
+            botMessage.includes(
+              "Apa yang diperlukan ya kak?"
+            )
+          ) {
+            displayMenuButton();
+          }
+
+          if (
+            botMessage
+              .toLowerCase()
+              .includes("tolong masukkan jurusannya ya kak :)")
+          ) {
+            displayJurusanButton();
+          }
+
+          if (
+            botMessage
+              .toLowerCase()
+              .includes("tolong masukkan kelas dan jurusannya ya kak :)")
+          ) {
+            displayKelasJurusanButton();
+          }
+
+          if (
+            botMessage
+              .toLowerCase()
+              .includes(
+                "tolong masukkan materi yang diajar guru tersebut ya kak :)"
+              )
+          ) {
+            displayMateriButton();
+          }
+
+          if (buttons && buttons.length > 0) {
+            buttons.forEach((button) => {
+              displayButton(button);
+            });
+          }
+
+          chatLog.scrollTop = chatLog.scrollHeight;
+        }
+        index++;
+        displayNextMessage();
+      }, 3000);
+      setTimeout(() => {
+        const botMessages = document.querySelectorAll(".bot-message");
+        botMessages.forEach((message) => {
+          if (message.innerText === "...") {
+            message.style.display = "none";
+          }
+        });
+      }, 3000);
+      setTimeout(() => {
+        const botMessages = document.querySelectorAll(".bot-message");
+        botMessages.forEach((message) => {
+          if (message.innerText === "Baik kak, tunggu sebentar ya...") {
+            message.style.display = "none";
+          }
+        });
+      }, 6000);
+    }
+  };
+
+  // Memanggil fungsi untuk menampilkan pesan-pesan satu per satu
+  displayNextMessage();
 });
 
+// // Receive and display bot responses from Rasa
+// socket.on("bot_uttered", (response) => {
+//   const botMessage = response.text;
+//   const buttons = response.buttons;
+
+//   displayMessage("...", "bot");
+
+//   setTimeout(() => {
+//     if (botMessage) {
+//       displayMessage(botMessage, "bot");
+
+//       if(botMessage.includes("Hay! ada yang bisa DITA bantu?")){
+//         displayMenuButton();
+//       }
+
+//       if(botMessage.toLowerCase().includes("tolong masukkan jurusannya ya kak :)")){
+//         displayJurusanButton();
+//       }
+
+//       if(botMessage.toLowerCase().includes("tolong masukkan kelas dan jurusannya ya kak :)")){
+//         displayKelasJurusanButton();
+//       }
+
+//       if(botMessage.toLowerCase().includes("tolong masukkan materi yang diajar guru tersebut ya kak :)")){
+//         displayMateriButton();
+//       }
+
+//       if (buttons && buttons.length > 0) {
+//         buttons.forEach((button) => {
+//           displayButton(button);
+//         });
+//       }
+
+//       chatLog.scrollTop = chatLog.scrollHeight;
+//     }
+//   }, 3000);
+//   setTimeout(() => {
+//     const botMessages = document.querySelectorAll('.bot-message');
+//     botMessages.forEach(message => {
+//       if (message.innerText === "...") {
+//         message.style.display = "none";
+//       }
+//     });
+//   }, 3000);
+//   // const botMessage = response.text;
+//   // const buttons = response.buttons;
+//   // displayMessage(botMessage, "bot");
+
+//   // if(botMessage.toLowerCase().includes("tolong masukkan jurusannya ya kak :)")){
+//   //   displayJurusanButton();
+//   // }
+
+//   // if(botMessage.toLowerCase().includes("tolong masukkan kelas dan jurusannya ya kak :)")){
+//   //   displayKelasJurusanButton();
+//   // }
+
+//   // if(botMessage.toLowerCase().includes("tolong masukkan materi yang diajar guru tersebut ya kak :)")){
+//   //   displayMateriButton();
+//   // }
+
+//   // if (buttons && buttons.length > 0) {
+//   //   buttons.forEach((button) => {
+//   //     displayButton(button);
+//   //   });
+//   // }
+
+//   // chatLog.scrollTop = chatLog.scrollHeight;
+//   // loadingDots.style.display = "none";
+// });
+
 socket.on("bot_uttered", (response) => {
-  const botMessage = response.text;
-  const buttons = response.buttons;
-  loadingDots2.style.display = "none";
-  displayMessage2(botMessage, "bot");
+  const botMessages2 = response.text.split("\b");
 
-  if(botMessage.toLowerCase().includes("tolong masukkan jurusannya ya kak :)")){
-    displayJurusanButton2();
-  }
+  let index = 0;
+  const displayNextMessage2 = () => {
+    if (index < botMessages2.length) {
+      const botMessage = botMessages2[index];
+      const buttons = response.buttons;
 
-  if(botMessage.toLowerCase().includes("tolong masukkan kelas dan jurusannya ya kak :)")){
-    displayKelasJurusanButton2();
-  }
+      displayMessage2("...", "bot");
 
-  if(botMessage.toLowerCase().includes("tolong masukkan materi yang diajar guru tersebut ya kak :)")){
-    displayMateriButton2();
-  }
+      setTimeout(() => {
+        if (botMessage) {
+          displayMessage2(botMessage, "bot");
+          // let nama = response.metadata.nama;
 
-  if (buttons && buttons.length > 0) {
-    buttons.forEach((button) => {
-      displayButton2(button);
-    });
-  }
+          // if(botMessage.includes(`Hay kak ardi! ada yang bisa DITA bantu?`)){
+          //   displayMenuButton();
+          // }
+          if (botMessage.indexOf("Hay kak") !== -1) {
+            displayMenuButton2();
+          }
 
-  chatLog.scrollTop = chatLog.scrollHeight;
+          if (
+            botMessage.includes(
+              "Ini dia beberapa pilahan menu untuk membantu kakak bertanya :)"
+            )
+          ) {
+            displayMenuButton2();
+          }
+          if (
+            botMessage.includes(
+              "Apa yang diperlukan ya kak?"
+            )
+          ) {
+            displayMenuButton2();
+          }
+          if (
+            botMessage
+              .toLowerCase()
+              .includes("tolong masukkan jurusannya ya kak :)")
+          ) {
+            displayJurusanButton2();
+          }
+
+          if (
+            botMessage
+              .toLowerCase()
+              .includes("tolong masukkan kelas dan jurusannya ya kak :)")
+          ) {
+            displayKelasJurusanButton2();
+          }
+
+          if (
+            botMessage
+              .toLowerCase()
+              .includes(
+                "tolong masukkan materi yang diajar guru tersebut ya kak :)"
+              )
+          ) {
+            displayMateriButton2();
+          }
+
+          if (buttons && buttons.length > 0) {
+            buttons.forEach((button) => {
+              displayButton2(button);
+            });
+          }
+
+          chatLog2.scrollTop = chatLog2.scrollHeight;
+        }
+        index++;
+        displayNextMessage2();
+      }, 3000);
+      setTimeout(() => {
+        const botMessages2 = document.querySelectorAll(".bot-message");
+        botMessages2.forEach((message) => {
+          if (message.innerText === "...") {
+            message.style.display = "none";
+          }
+        });
+      }, 3000);
+      setTimeout(() => {
+        const botMessages2 = document.querySelectorAll(".bot-message");
+        botMessages2.forEach((message) => {
+          if (message.innerText === "Baik kak, tunggu sebentar ya...") {
+            message.style.display = "none";
+          }
+        });
+      }, 6000);
+    }
+  };
+
+  // Memanggil fungsi untuk menampilkan pesan-pesan satu per satu
+  displayNextMessage2();
 });
 
 function displayMessage(message, sender) {
@@ -496,231 +747,224 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // full screen
-document.getElementById('size').addEventListener('click', ()=> {
-  const chatBox = document.querySelector('.chat-box');
-  const chatLog = document.getElementById('chat-log2');
-  const userInput2 = document.getElementById('user-input2');
+document.getElementById("size").addEventListener("click", () => {
+  const chatBox = document.querySelector(".chat-box");
+  const chatLog = document.getElementById("chat-log2");
+  const userInput2 = document.getElementById("user-input2");
 
-  chatBox.classList.toggle('full-screen');
-  
-  const batas2 = document.querySelector('.batas2');
-  if (chatBox.classList.contains('full-screen')) {
-    batas2.style.height = '530px'; 
-  }else{
-    batas2.style.height = '235px'; 
-  
+  chatBox.classList.toggle("full-screen");
+
+  const batas2 = document.querySelector(".batas2");
+  if (chatBox.classList.contains("full-screen")) {
+    batas2.style.height = "530px";
+  } else {
+    batas2.style.height = "235px";
   }
 
-  if (chatBox.classList.contains('full-screen')) {
-    chatLog.style.height = '510px';
-  }else{
-    chatLog.style.height = '210px';
+  if (chatBox.classList.contains("full-screen")) {
+    chatLog.style.height = "510px";
+  } else {
+    chatLog.style.height = "210px";
   }
 
-  if (chatBox.classList.contains('full-screen')) {
-    userInput2.style.width = '280px';
-  }else{
-    userInput2.style.width = '220px';
+  if (chatBox.classList.contains("full-screen")) {
+    userInput2.style.width = "280px";
+  } else {
+    userInput2.style.width = "220px";
   }
 });
 
-document.addEventListener("DOMContentLoaded", ()=>{
-  document.getElementById('size1').addEventListener('click',()=>{
-    
-    if(window.innerWidth>=1280){
-      const profile = document.querySelector('.profile');
-      if(!profile.classList.contains('profile-full-screen')){
-        profile.classList.add('profile-full-screen');
-      }else{
-        profile.classList.remove('profile-full-screen');
-      }
-  
-      const chatLog = document.getElementById('chat-log');
-      if (profile.classList.contains('profile-full-screen')) {
-        chatLog.style.height = '580px'; 
-      }else{
-        chatLog.style.height = '350px'; 
-      }
-      
-      const batas = document.querySelector('.batas');
-      if (profile.classList.contains('profile-full-screen')) {
-        batas.style.height = '600px'; 
-      }else{
-        batas.style.height = '370px'; 
-      }
-      
-      const userInput= document.getElementById('user-input');
-      if(profile.classList.contains('profile-full-screen')){
-        userInput.style.width = '1000px';
-        userInput.style.height= '30px'
-      }else{
-        userInput.style.width = '700px';
-      }
-    }
-    if(window.innerWidth<=576){
-      const profile = document.querySelector('.profile');
-      if(!profile.classList.contains('profile-full-screen')){
-        profile.classList.add('profile-full-screen');
-      }else{
-        profile.classList.remove('profile-full-screen');
-      }
-  
-      const chatLog = document.getElementById('chat-log');
-      if (profile.classList.contains('profile-full-screen')) {
-        chatLog.style.height = '630px'; 
-      }else{
-        chatLog.style.height = '250px'; 
-      }
-      
-      const batas = document.querySelector('.batas');
-      if (profile.classList.contains('profile-full-screen')) {
-        batas.style.height = '650px'; 
-      }else{
-        batas.style.height = '260px'; 
-      }
-      
-      const userInput= document.getElementById('user-input');
-      if(profile.classList.contains('profile-full-screen')){
-        userInput.style.width = '490px';
-        userInput.style.height= '30px'
-      }else{
-        userInput.style.width = '350px';
-        userInput.style.height = '13px';
-      }
-      
-      const sendImg = document.querySelector('.send-img');
-      if(profile.classList.contains('profile-full-screen')){
-        sendImg.style.width = '20px';
-        sendImg.style.height= '20px'
-      }else{
-        sendImg.style.width = '10px';
-        sendImg.style.height = '10px';
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("size1").addEventListener("click", () => {
+    if (window.innerWidth >= 1280) {
+      const profile = document.querySelector(".profile");
+      if (!profile.classList.contains("profile-full-screen")) {
+        profile.classList.add("profile-full-screen");
+      } else {
+        profile.classList.remove("profile-full-screen");
       }
 
-    }
-    if(window.innerWidth<=672){
-      const profile = document.querySelector('.profile');
-      if(!profile.classList.contains('profile-full-screen')){
-        profile.classList.add('profile-full-screen');
-      }else{
-        profile.classList.remove('profile-full-screen');
-      }
-  
-      const chatLog = document.getElementById('chat-log');
-      if (profile.classList.contains('profile-full-screen')) {
-        chatLog.style.height = '630px'; 
-      }else{
-        chatLog.style.height = '350px'; 
-      }
-      
-      const batas = document.querySelector('.batas');
-      if (profile.classList.contains('profile-full-screen')) {
-        batas.style.height = '650px'; 
-      }else{
-        batas.style.height = '370px'; 
-      }
-      
-      const userInput= document.getElementById('user-input');
-      if(profile.classList.contains('profile-full-screen')){
-        userInput.style.width = '490px';
-        userInput.style.height= '30px'
-      }else{
-        userInput.style.width = '450px';
-        userInput.style.height = '20px';
-      }
-      
-      const sendImg = document.querySelector('.send-img');
-      if(profile.classList.contains('profile-full-screen')){
-        sendImg.style.width = '20px';
-        sendImg.style.height= '20px'
-      }else{
-        sendImg.style.width = '18px';
-        sendImg.style.height = '18px';
+      const chatLog = document.getElementById("chat-log");
+      if (profile.classList.contains("profile-full-screen")) {
+        chatLog.style.height = "580px";
+      } else {
+        chatLog.style.height = "350px";
       }
 
-    }
-    if(window.innerWidth<=768){
-      const profile = document.querySelector('.profile');
-      if(!profile.classList.contains('profile-full-screen')){
-        profile.classList.add('profile-full-screen');
-      }else{
-        profile.classList.remove('profile-full-screen');
-      }
-  
-      const chatLog = document.getElementById('chat-log');
-      if (profile.classList.contains('profile-full-screen')) {
-        chatLog.style.height = '830px'; 
-      }else{
-        chatLog.style.height = '230px'; 
-      }
-      
-      const batas = document.querySelector('.batas');
-      if (profile.classList.contains('profile-full-screen')) {
-        batas.style.height = '850px'; 
-      }else{
-        batas.style.height = '260px'; 
-      }
-      
-      const userInput= document.getElementById('user-input');
-      if(profile.classList.contains('profile-full-screen')){
-        userInput.style.width = '600px';
-        userInput.style.height= '30px'
-      }else{
-        userInput.style.width = '350px';
-        userInput.style.height = '20px';
-      }
-      
-      const sendImg = document.querySelector('.send-img');
-      if(profile.classList.contains('profile-full-screen')){
-        sendImg.style.width = '20px';
-        sendImg.style.height= '20px'
-      }else{
-        sendImg.style.width = '18px';
-        sendImg.style.height = '18px';
+      const batas = document.querySelector(".batas");
+      if (profile.classList.contains("profile-full-screen")) {
+        batas.style.height = "600px";
+      } else {
+        batas.style.height = "370px";
       }
 
+      const userInput = document.getElementById("user-input");
+      if (profile.classList.contains("profile-full-screen")) {
+        userInput.style.width = "1000px";
+        userInput.style.height = "30px";
+      } else {
+        userInput.style.width = "700px";
+      }
     }
-    if(window.innerWidth<=1015){
-      const profile = document.querySelector('.profile');
-      if(!profile.classList.contains('profile-full-screen')){
-        profile.classList.add('profile-full-screen');
-      }else{
-        profile.classList.remove('profile-full-screen');
-      }
-  
-      const chatLog = document.getElementById('chat-log');
-      if (profile.classList.contains('profile-full-screen')) {
-        chatLog.style.height = '850px'; 
-      }else{
-        chatLog.style.height = '310px'; 
-      }
-      
-      const batas = document.querySelector('.batas');
-      if (profile.classList.contains('profile-full-screen')) {
-        batas.style.height = '870px'; 
-      }else{
-        batas.style.height = '330px'; 
-      }
-      
-      const userInput= document.getElementById('user-input');
-      if(profile.classList.contains('profile-full-screen')){
-        userInput.style.width = '900px';
-        userInput.style.height= '30px'
-      }else{
-        userInput.style.width = '500px';
-        userInput.style.height = '20px';
-      }
-      
-      const sendImg = document.querySelector('.send-img');
-      if(profile.classList.contains('profile-full-screen')){
-        sendImg.style.width = '20px';
-        sendImg.style.height= '20px'
-      }else{
-        sendImg.style.width = '18px';
-        sendImg.style.height = '18px';
+    if (window.innerWidth <= 576) {
+      const profile = document.querySelector(".profile");
+      if (!profile.classList.contains("profile-full-screen")) {
+        profile.classList.add("profile-full-screen");
+      } else {
+        profile.classList.remove("profile-full-screen");
       }
 
+      const chatLog = document.getElementById("chat-log");
+      if (profile.classList.contains("profile-full-screen")) {
+        chatLog.style.height = "630px";
+      } else {
+        chatLog.style.height = "250px";
+      }
+
+      const batas = document.querySelector(".batas");
+      if (profile.classList.contains("profile-full-screen")) {
+        batas.style.height = "650px";
+      } else {
+        batas.style.height = "260px";
+      }
+
+      const userInput = document.getElementById("user-input");
+      if (profile.classList.contains("profile-full-screen")) {
+        userInput.style.width = "490px";
+        userInput.style.height = "30px";
+      } else {
+        userInput.style.width = "350px";
+        userInput.style.height = "13px";
+      }
+
+      const sendImg = document.querySelector(".send-img");
+      if (profile.classList.contains("profile-full-screen")) {
+        sendImg.style.width = "20px";
+        sendImg.style.height = "20px";
+      } else {
+        sendImg.style.width = "10px";
+        sendImg.style.height = "10px";
+      }
+    }
+    if (window.innerWidth <= 672) {
+      const profile = document.querySelector(".profile");
+      if (!profile.classList.contains("profile-full-screen")) {
+        profile.classList.add("profile-full-screen");
+      } else {
+        profile.classList.remove("profile-full-screen");
+      }
+
+      const chatLog = document.getElementById("chat-log");
+      if (profile.classList.contains("profile-full-screen")) {
+        chatLog.style.height = "630px";
+      } else {
+        chatLog.style.height = "350px";
+      }
+
+      const batas = document.querySelector(".batas");
+      if (profile.classList.contains("profile-full-screen")) {
+        batas.style.height = "650px";
+      } else {
+        batas.style.height = "370px";
+      }
+
+      const userInput = document.getElementById("user-input");
+      if (profile.classList.contains("profile-full-screen")) {
+        userInput.style.width = "490px";
+        userInput.style.height = "30px";
+      } else {
+        userInput.style.width = "450px";
+        userInput.style.height = "20px";
+      }
+
+      const sendImg = document.querySelector(".send-img");
+      if (profile.classList.contains("profile-full-screen")) {
+        sendImg.style.width = "20px";
+        sendImg.style.height = "20px";
+      } else {
+        sendImg.style.width = "18px";
+        sendImg.style.height = "18px";
+      }
+    }
+    if (window.innerWidth <= 768) {
+      const profile = document.querySelector(".profile");
+      if (!profile.classList.contains("profile-full-screen")) {
+        profile.classList.add("profile-full-screen");
+      } else {
+        profile.classList.remove("profile-full-screen");
+      }
+
+      const chatLog = document.getElementById("chat-log");
+      if (profile.classList.contains("profile-full-screen")) {
+        chatLog.style.height = "830px";
+      } else {
+        chatLog.style.height = "230px";
+      }
+
+      const batas = document.querySelector(".batas");
+      if (profile.classList.contains("profile-full-screen")) {
+        batas.style.height = "850px";
+      } else {
+        batas.style.height = "260px";
+      }
+
+      const userInput = document.getElementById("user-input");
+      if (profile.classList.contains("profile-full-screen")) {
+        userInput.style.width = "600px";
+        userInput.style.height = "30px";
+      } else {
+        userInput.style.width = "350px";
+        userInput.style.height = "20px";
+      }
+
+      const sendImg = document.querySelector(".send-img");
+      if (profile.classList.contains("profile-full-screen")) {
+        sendImg.style.width = "20px";
+        sendImg.style.height = "20px";
+      } else {
+        sendImg.style.width = "18px";
+        sendImg.style.height = "18px";
+      }
+    }
+    if (window.innerWidth <= 1015) {
+      const profile = document.querySelector(".profile");
+      if (!profile.classList.contains("profile-full-screen")) {
+        profile.classList.add("profile-full-screen");
+      } else {
+        profile.classList.remove("profile-full-screen");
+      }
+
+      const chatLog = document.getElementById("chat-log");
+      if (profile.classList.contains("profile-full-screen")) {
+        chatLog.style.height = "850px";
+      } else {
+        chatLog.style.height = "310px";
+      }
+
+      const batas = document.querySelector(".batas");
+      if (profile.classList.contains("profile-full-screen")) {
+        batas.style.height = "870px";
+      } else {
+        batas.style.height = "330px";
+      }
+
+      const userInput = document.getElementById("user-input");
+      if (profile.classList.contains("profile-full-screen")) {
+        userInput.style.width = "900px";
+        userInput.style.height = "30px";
+      } else {
+        userInput.style.width = "500px";
+        userInput.style.height = "20px";
+      }
+
+      const sendImg = document.querySelector(".send-img");
+      if (profile.classList.contains("profile-full-screen")) {
+        sendImg.style.width = "20px";
+        sendImg.style.height = "20px";
+      } else {
+        sendImg.style.width = "18px";
+        sendImg.style.height = "18px";
+      }
     }
   });
 });
-
